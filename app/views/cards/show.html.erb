@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        Original Text
+      </th>
+      <th>
+       Translate Text
+      </th>
+      <th>
+        Review Date
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cards.each do |card| %>
+    <tr>
+      <td>
+        <%= card.original_text %>
+      </td>
+      <td>
+        <%= card.translated_text %>
+      </td>
+      <td>
+        <%= card.review_date.strftime("%d %b %y") %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
