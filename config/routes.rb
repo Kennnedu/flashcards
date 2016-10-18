@@ -1,4 +1,4 @@
-# frozen_string_literal: true
 Rails.application.routes.draw do
+  resource :cards, only: :show
   root 'home#index'
 end
