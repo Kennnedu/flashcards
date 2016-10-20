@@ -10,6 +10,8 @@
       <th>
         Review Date
       </th>
+      <th>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +25,12 @@
       </td>
       <td>
         <%= card.review_date.strftime("%d %b %y") %>
+      </td>
+      <td>
+        <%= link_to 'Edit', edit_card_path(card), class: 'btn btn-warning btn-sm' %>
+      </td>
+      <td>
+        <%= button_to 'Delete', card, method: :delete, class: 'btn btn-danger btn-sm' %>
       </td>
     </tr>
     <% end %>

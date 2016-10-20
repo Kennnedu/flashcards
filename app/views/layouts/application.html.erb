@@ -15,9 +15,12 @@
           <h1>Флэшкарточкер</h1>
           <ul class="navigation-links">
             <li><%= link_to 'Все карточки', cards_path %></li>
-            <li><a href="#" class="btn btn-primary btn-lg">Добавить карточку</a></li>
+            <li><%= link_to 'Добавить карточку', new_card_path %></li>
           </ul>
         </header>
+        <div class="row">
+          <%= notice %>
+        </div>
         <%= yield %>
       </section>
     </div>
