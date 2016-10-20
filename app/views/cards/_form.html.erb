@@ -14,16 +14,13 @@
   <% end %>
   <div class="row">
     <div class="col-md-12">
-      <div class="col-md-3">
+      <div class="col-md-4">
         <%= f.input :original_text, label: false, placeholder: 'Original Text' %>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <%= f.input :translated_text, label: false, placeholder: 'Translated Text' %>
       </div>
-      <div class="col-md-3">
-        <%= f.input :review_date, label: false, as: :date, default: Date.today %>
-      </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <%= f.button :submit %>
       </div>
     </div>

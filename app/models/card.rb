@@ -3,7 +3,7 @@ class Card < ApplicationRecord
   validates :original_text, :translated_text, :review_date, presence: true
   validate :equal_text
 
-  before_create :increase_days
+  before_validation :set_review_date
   before_validation :strip_text
 
   private
@@ -18,7 +18,7 @@ class Card < ApplicationRecord
     translated_text.strip!
   end
 
-  def increase_days
-    self.review_date = review_date.next_day(3)
+  def set_review_date
+    self.review_date = Date.today.next_day(3)
   end
 end
