@@ -1,7 +1,5 @@
-# Model Card
+# app/model/card.rb
 class Card < ApplicationRecord
-  attr_accessor :checking_word
-
   validates :original_text, :translated_text, :review_date, presence: true
   validate :equal_text
 
@@ -9,12 +7,6 @@ class Card < ApplicationRecord
   before_validation :strip_text
 
   scope :three_day_ago, -> { where('review_date <= ?', Date.today) }
-
-  def check(word)
-    false unless original_text.eql? word
-    set_review_date
-    true
-  end
 
   private
 

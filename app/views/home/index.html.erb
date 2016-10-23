@@ -4,19 +4,21 @@
   </p>
 </section>
 
-<%= simple_form_for @card, url: check_word_path, method: :post do |f|%>
-  <%= f.input :id, as: :hidden, default: @card.id %>
-  <div class="row">
-    <div class='col-md-6'>
-      <%= f.input :checking_word %>
+<% if @card.present? %>
+  <%= form_tag check_word_path, method: :post do %>
+    <%= hidden_field_tag :id, @card.id %>
+    <div class="row">
+      <div class='col-md-6'>
+        <%= text_field_tag :original_text, nil, { class: 'form-control' } %>
+      </div>
+      <div class='col-md-6'>
+        <%= text_area_tag :translated_text, @card.translated_text, { class: 'form-control', disabled: true } %>
+      </div>
     </div>
-    <div class='col-md-6'>
-      <%= f.input :translated_text, as: :text, disabled: true %>
+    <div class='row'>
+      <div class="col-md-6">
+        <%= submit_tag 'Check word', { class: 'btn btn-primary' } %>
+      </div>
     </div>
-  </div>
-  <div class='row'>
-    <div class="col-md-6">
-      <%= f.button :submit, 'Check word' %>
-    </div>
-  </div>
+  <% end %>
 <% end %>
