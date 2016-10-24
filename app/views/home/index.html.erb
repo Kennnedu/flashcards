@@ -3,3 +3,22 @@
     Первый в мире удобный менеджер флеш-карточек. Именно так.
   </p>
 </section>
+
+<% if @card.present? %>
+  <%= form_tag check_word_path, method: :post do %>
+    <%= hidden_field_tag :id, @card.id %>
+    <div class="row">
+      <div class='col-md-6'>
+        <%= text_field_tag :original_text, nil, { class: 'form-control' } %>
+      </div>
+      <div class='col-md-6'>
+        <%= text_area_tag :translated_text, @card.translated_text, { class: 'form-control', disabled: true } %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-md-6">
+        <%= submit_tag 'Check word', { class: 'btn btn-primary' } %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

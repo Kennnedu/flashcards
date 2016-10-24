@@ -10,7 +10,7 @@ def extract_and_create_card(doc)
   doc.xpath('.//table/tbody/tr').each do |tr|
     german_word = tr.xpath('.//td[@class="bigLetter"]').text.strip.to_s
     english_word = tr.xpath('.//td')[2].text.strip.to_s    
-    Card.create!(original_text: german_word, translated_text: english_word, review_date: Date.today)
+    Card.create(original_text: german_word, translated_text: english_word)
   end
 end
 

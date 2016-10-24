@@ -1,10 +1,12 @@
-# Model Card
+# app/model/card.rb
 class Card < ApplicationRecord
   validates :original_text, :translated_text, :review_date, presence: true
   validate :equal_text
 
   before_validation :set_review_date
   before_validation :strip_text
+
+  scope :three_day_ago, -> { where('review_date <= ?', Date.today) }
 
   private
 
