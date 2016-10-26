@@ -21,6 +21,6 @@ class Card < ApplicationRecord
   end
 
   def set_review_date
-    self.review_date = Date.today.next_day(3)
+    self.review_date ||= Date.today.next_day(3)
   end
 end
