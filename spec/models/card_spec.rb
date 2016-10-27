@@ -31,4 +31,17 @@ RSpec.describe Card, type: :model do
       expect(card.translated_text).to eq 'zxc'
     end
   end
+
+  context 'with user' do
+    it 'get true if card created in db with user' do
+      create(:user)
+      card = Card.create(original_text: 'qweqwe', translated_text: 'zxc', user_id: User.first.id)
+      expect(Card.last.present?).to eq true 
+    end
+
+    it 'get false if card not created with user ' do
+      card = Card.create(original_text: 'qweqwe', translated_text: 'zxc', user_id: nil)
+      expect(Card.last.present?).to eq false 
+    end
+  end
 end
