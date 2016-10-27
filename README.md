@@ -1,5 +1,7 @@
 # README
 
+[![Build Status](https://travis-ci.org/Kennnedu/flashcards.svg?branch=seventh-task)](https://travis-ci.org/Kennnedu/flashcards)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
