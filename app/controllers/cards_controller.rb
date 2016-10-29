@@ -1,8 +1,10 @@
-# Cards Controller
+# app/controllers/cards_controller.rb
 class CardsController < ApplicationController
+  before_action :require_login
   before_action :set_card, only: [:edit, :destroy, :update]
+
   def index
-    @cards = Card.all
+    @cards = current_user.cards
   end
 
   def new
@@ -13,8 +15,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(params_card)
-    if @card.save
+    if current_user.cards.create(params_card)
       redirect_to cards_path, notice: 'Card was successfull created!'
     else
       render :new
