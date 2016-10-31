@@ -1,7 +1,9 @@
 # app/controllers/home_controller.rb
 class HomeController < ApplicationController
+  before_action :require_login
+
   def index
-    @card = Card.three_day_ago.order("RANDOM()").first
+    @card = current_user.cards.three_day_ago.order("RANDOM()").first
   end
 
   def check_word
