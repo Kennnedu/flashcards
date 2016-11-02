@@ -15,10 +15,11 @@ class CardsController < ApplicationController
   end
 
   def create
-    if current_user.cards.create(params_card)
+    @card = current_user.cards.new(params_card)
+    if @card.save
       redirect_to cards_path, notice: 'Card was successfull created!'
     else
-      render :new
+      redirect_to new_card_path, notice: @card.errors.full_messages.join(' ')
     end
   end
 
@@ -38,7 +39,7 @@ class CardsController < ApplicationController
   private
 
   def params_card
-    params.require(:card).permit(:original_text, :translated_text)
+    params.require(:card).permit(:original_text, :translated_text, :picture)
   end
 
   def set_card
