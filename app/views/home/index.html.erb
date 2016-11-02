@@ -8,14 +8,19 @@
   <%= form_tag check_word_path, method: :post do %>
     <%= hidden_field_tag :id, @card.id %>
     <div class="row">
-      <div class='col-md-6'>
-        <%= text_field_tag :original_text, nil, { class: 'form-control' } %>
+      <div class="col-md-6">
+        <%= image_tag @card.picture_url(:thumb), id: 'picture' if @card.picture?  %>
       </div>
       <div class='col-md-6'>
-        <%= text_area_tag :translated_text, @card.translated_text, { class: 'form-control', disabled: true } %>
+        <p>
+          <%= text_area_tag :translated_text, @card.translated_text, { class: 'form-control', disabled: true } %>
+        </p>
       </div>
-    </div>
-    <div class='row'>
+      <div class='col-md-6'>
+        <p>
+          <%= text_field_tag :original_text, nil, { class: 'form-control' } %>
+        </p>
+      </div>
       <div class="col-md-6">
         <%= submit_tag 'Check word', { class: 'btn btn-primary' } %>
       </div>

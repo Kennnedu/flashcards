@@ -23,6 +23,8 @@ gem 'nokogiri'
 gem 'interactor'
 gem 'sorcery'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'mini_magick'
+gem 'carrierwave'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a
