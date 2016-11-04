@@ -12,6 +12,7 @@ RSpec.describe 'card' do
       fill_in 'card_original_text', with: 'стол'
       fill_in 'card_translated_text', with: 'table'
       attach_file 'card_picture', Rails.root + 'test/fixtures/files/table.JPG'
+      select 'English', from: 'card_deck_id'
       click_button 'Create Card'
       expect(page).to have_content 'Card was successfull created!'
       expect(Card.last.picture.present?).to eq true

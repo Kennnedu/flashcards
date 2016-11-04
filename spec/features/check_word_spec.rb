@@ -6,6 +6,7 @@ RSpec.describe 'check the word' do
       create(:card)
       login('sasha@pupkin.com', '123456')
     end
+
     it 'check word if right answer' do
       fill_in 'original_text', with: 'Ärger'
       click_button 'Check word'

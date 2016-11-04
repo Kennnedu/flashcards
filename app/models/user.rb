@@ -4,8 +4,10 @@ class User < ApplicationRecord
     config.authentications_class = Authentication
   end
 
-  has_many :cards
+  has_many :decks, dependent: :destroy
+  has_many :cards, through: :decks
   has_many :authentications, dependent: :destroy
+  belongs_to :deck, foreign_key: 'current_deck'
   accepts_nested_attributes_for :authentications
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }

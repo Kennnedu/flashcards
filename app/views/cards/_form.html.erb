@@ -14,6 +14,9 @@
   <% end %>
   <div class="row">
     <div class="col-md-12">
+      <%= f.input :deck_id, collection: @decks.map { |r| [r.name, r.id, { class: r.id }] }, class: 'form-control' %>
+    </div>
+    <div class="col-md-12">
       <div class="col-md-3">
         <%= f.input :original_text, label: false, placeholder: 'Original Text' %>
       </div>

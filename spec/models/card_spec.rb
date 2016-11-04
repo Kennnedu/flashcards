@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Card, type: :model do 
   before (:each) do
-    @user = create(:user)
+    @user = create(:deck)
   end
 
   context 'method equal_text' do
@@ -36,14 +36,14 @@ RSpec.describe Card, type: :model do
     end
   end
 
-  context 'with user' do
-    it 'get true if card created in db with user' do
-      card = Card.create(original_text: 'qweqwe', translated_text: 'zxc', user_id: User.first.id)
+  context 'with deck' do
+    it 'get true if card created in db with deck' do
+      card = Card.create(original_text: 'qweqwe', translated_text: 'zxc', deck_id: Deck.first.id)
       expect(Card.last.present?).to eq true 
     end
 
-    it 'get false if card not created with user ' do
-      card = Card.create(original_text: 'qweqwe', translated_text: 'zxc', user_id: nil)
+    it 'get false if card not created with deck' do
+      card = Card.create(original_text: 'qweqwe', translated_text: 'zxc', deck_id: nil)
       expect(Card.last.present?).to eq false 
     end
   end

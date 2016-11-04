@@ -28,6 +28,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_current_deck
+    if current_user.update(params_change_current_deck)
+      redirect_to root_path, notice: 'Deck was successful changed!'
+    else
+      redirect_to root_path, notice: 'Deck wasn\'t changed!'
+    end
+  end
+
   private
 
   def login_with_new_params
@@ -40,5 +48,9 @@ class UsersController < ApplicationController
 
   def params_edit_user
     params.permit(:email, :password, :password_confirmation)
+  end
+
+  def params_change_current_deck
+    params.require(:user).permit(:current_deck)
   end
 end

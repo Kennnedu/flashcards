@@ -2,6 +2,9 @@
   <thead>
     <tr>
       <th>
+        Deck
+      </th>
+      <th>
         Original Text
       </th>
       <th>
@@ -17,6 +20,9 @@
   <tbody>
     <% @cards.each do |card| %>
     <tr>
+      <td>
+        <%= card.deck.name %>
+      </td>
       <td>
         <%= card.original_text %>
       </td>
