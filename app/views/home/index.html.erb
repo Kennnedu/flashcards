@@ -4,7 +4,14 @@
   </p>
 </section>
 
+<%= simple_form_for current_user, url: update_current_deck_users_path, method: :put do |f| %>
+  <%= f.input :current_deck, collection: @decks, class: 'form-control'  %>
+  <br>
+  <%= f.submit 'Change deck', class: 'btn btn-default' %>
+<% end %>
+
 <% if @card.present? %>
+  <h4><%= @card.deck.name %></h4>
   <%= form_tag check_word_path, method: :post do %>
     <%= hidden_field_tag :id, @card.id %>
     <div class="row">

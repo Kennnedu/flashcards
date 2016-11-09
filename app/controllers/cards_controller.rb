@@ -9,9 +9,11 @@ class CardsController < ApplicationController
 
   def new
     @card = Card.new
+    @decks = current_user.decks
   end
 
   def edit
+    @decks = current_user.decks
   end
 
   def create
@@ -27,7 +29,7 @@ class CardsController < ApplicationController
     if @card.update(params_card)
       redirect_to cards_path, notice: 'Card was succsessfull updated!'
     else
-      render :edit
+      redirect_to edit_card_path
     end
   end
 
@@ -39,7 +41,7 @@ class CardsController < ApplicationController
   private
 
   def params_card
-    params.require(:card).permit(:original_text, :translated_text, :picture)
+    params.require(:card).permit(:original_text, :translated_text, :picture, :deck_id)
   end
 
   def set_card

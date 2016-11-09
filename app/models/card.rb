@@ -2,15 +2,16 @@
 class Card < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
-  belongs_to :user
+  belongs_to :deck
 
-  validates :original_text, :translated_text, :review_date, :user_id, presence: true
+  validates :original_text, :translated_text, :review_date, :deck_id, presence: true
   validate :equal_text
 
   before_validation :set_review_date
   before_validation :strip_text
 
   scope :three_day_ago, -> { where('review_date <= ?', Date.today) }
+  scope :current_deck, -> (deck) { where(deck_id: deck) }
 
   private
 

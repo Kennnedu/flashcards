@@ -3,7 +3,9 @@ class HomeController < ApplicationController
   before_action :require_login
 
   def index
-    @card = current_user.cards.three_day_ago.order("RANDOM()").first
+    result = EmptyDeck.call(user: current_user)
+    @card = result.card
+    @decks = result.decks
   end
 
   def check_word
